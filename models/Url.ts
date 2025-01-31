@@ -1,13 +1,13 @@
-import mongoose, {Document, Model, Schema} from "mongoose";
+import mongoose, {Document, Model} from "mongoose";
 
 
 const urlSchema = new mongoose.Schema({
-    originalURL: {
+    originalUrl: {
         type: String,
         required: true,
         unique: true
     },
-    shortURL: {
+    shortUrl: {
         type: String,
         required: true,
         unique: true
@@ -17,8 +17,8 @@ const urlSchema = new mongoose.Schema({
 });
 
 export interface IUrl extends Document {
-    originalURL : string,
-    shortURL : string
+    originalUrl : string,
+    shortUrl : string
 }
 
 const Url: Model<IUrl> = mongoose.models.Url || mongoose.model<IUrl>('Url',urlSchema);
