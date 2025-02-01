@@ -7,8 +7,11 @@ export class UrlShortnerService {
         this.urlRepository = new URLRepository();
     }
 
-    async shortenURL(originalUrl: string) : Promise<string>{
-        let url = await this.urlRepository.getUrlByOriginalUrl(originalUrl);
+    async shortenURL(orignalUrl?: string) : Promise<string>{
+        if(!orignalUrl) {
+            return "";
+        }
+        let url = await this.urlRepository.getUrlByOriginalUrl(orignalUrl);
         if(url) {
             return url.shortUrl;
         }
@@ -20,7 +23,7 @@ export class UrlShortnerService {
             url = await this.urlRepository.getUrlByShortUrl(shortUrl);
         }
 
-        await this.urlRepository.createUrl(originalUrl,shortUrl);
+        await this.urlRepository.createUrl(orignalUrl,shortUrl);
         return shortUrl;
     }
 
