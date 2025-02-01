@@ -23,7 +23,7 @@ export class UrlShortnerService {
             url = await this.urlRepository.getUrlByShortUrl(shortUrl);
         }
 
-        await this.urlRepository.createUrl(orignalUrl,shortUrl);
+        await this.urlRepository.createUrl(orignalUrl,`urls/${shortUrl}`);
         return shortUrl;
     }
 

@@ -46,7 +46,7 @@ export default async function UrlList() {
                             </tr>
                         </thead>
                         <tbody>
-                            {urls.urls.map((url: {_id: string,originalUrl: string, shortUrl: string}) => {
+                            {urls.urls && urls.urls.map((url: {_id: string,originalUrl: string, shortUrl: string}) => {
                                return(
                                  <tr key={url._id}>
                                     <td>{url.originalUrl}</td>
