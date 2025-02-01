@@ -9,5 +9,7 @@ const fetchUrls = cache(async () => {
 
 export async function GET() {
 
-    return NextResponse.json({urls: await fetchUrls()});
+    const response =  NextResponse.json({urls: await fetchUrls()})
+    response.headers.set('Cache-control','public,max-age=60 s-maxage=60, stale-while-revalidate=59');
+    return response;
 }
